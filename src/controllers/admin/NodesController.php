@@ -2,7 +2,7 @@
 namespace wajox\y2modcms\controllers\admin;
 
 use wajox\y2modcms\models\ContentNode;
-use wajox\y2modcms\services\content\ContentNodesManager;
+use wajox\y2modcms\services\ContentNodesManager;
 use wajox\yii2base\modules\admin\controllers\ApplicationController;
 use yii\web\NotFoundHttpException;
 use yii\data\ActiveDataProvider;
