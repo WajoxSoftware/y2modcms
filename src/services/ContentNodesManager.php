@@ -188,10 +188,13 @@ class ContentNodesManager extends Object
 
     protected function initBuilder($node)
     {
-        $builderClass = '\wajox\yii2base\services\content\builders\\'
-            . $this->getBuildersList()[$node->type_id];
+        $builderClass = $this->getBuildersList()[$node->type_id];
+        
+        $builder = $this->createObject(
+            $builderClass,
+            [$this->getUser()]
+        );
 
-        $builder = $this->createObject($builderClass, [$this->getUser()]);
         $builder->setNode($node);
 
         $this->setBuilder($builder);
@@ -202,8 +205,8 @@ class ContentNodesManager extends Object
     protected function getBuildersList()
     {
         return [
-            ContentNode::TYPE_ID_CATALOG => 'CatalogBuilder',
-            ContentNode::TYPE_ID_PAGE => 'PageBuilder',
+            ContentNode::TYPE_ID_CATALOG => '\wajox\y2modcms\services\builders\CatalogBuilder',
+            ContentNode::TYPE_ID_PAGE => '\wajox\y2modcms\services\builders\PageBuilder',
         ];
     }
 
