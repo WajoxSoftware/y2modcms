@@ -1,0 +1,21 @@
+{
+    "name": "wajox/y2modcms",
+    "description": "cms module for yii2-base",
+    "type": "module",
+    "require": {
+        "wajox/yii2base": "dev-master"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ildar Usmanov",
+            "email": "wajox@mail.ru"
+        }
+    ],
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+            "wajox\\y2modcms\\": "src/"
+        }
+    }
+}
