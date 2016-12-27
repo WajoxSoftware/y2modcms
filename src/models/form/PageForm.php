@@ -1,5 +1,5 @@
 <?php
-namespace wajox\yii2base\models\form;
+namespace wajox\y2modcms\models\form;
 
 use wajox\y2modcms\models\ContentNode;
 
