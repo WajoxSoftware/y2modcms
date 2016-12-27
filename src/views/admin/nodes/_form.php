@@ -1,7 +1,7 @@
 <?php
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
-use wajox\y2modcms\modules\content\models\ContentNode;
+use wajox\y2modcms\models\ContentNode;
 use wajox\yii2base\helpers\FormHelper;
 
 $formViewsMap = [

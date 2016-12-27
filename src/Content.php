@@ -7,7 +7,8 @@ class Content extends \wajox\yii2base\modules\ModuleAbstract
 
     protected function initModule()
     {
-        parent::initModule();
+        $this->controllerNamespace = 'wajox\y2modcms\\'.$this->id.'\controllers';
         $this->layout = 'profile';
+        $this->getApp()->user->loginUrl = ['/'.$this->id.'/session'];
     }
 }
