@@ -1,5 +1,5 @@
 <?php
-namespace wajox\y2modcms\modules\content;
+namespace wajox\y2modcms;
 
 class Content extends \wajox\yii2base\modules\ModuleAbstract
 {
