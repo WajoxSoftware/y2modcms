@@ -17,9 +17,15 @@ class NodesController extends ApplicationController
             $parentNode = $this->findModel($id);
         }
 
-        $query = ContentNode::find()->where(['parent_node_id' => $id]);
+        $query = $this
+            ->getRepository()
+            ->find(ContentNode::className())
+            ->byParentId($id);
 
-        $dataProvider = $this->createObject(ActiveDataProvider::className(), [['query' => $query]]);
+        $dataProvider = $this->createObject(
+            ActiveDataProvider::className(),
+            [['query' => $query]]
+        );
 
         return $this->render('index', [
             'parentNode' => $parentNode,
@@ -97,17 +103,16 @@ class NodesController extends ApplicationController
 
     protected function findModel($id)
     {
-        if (($model = ContentNode::findOne($id)) !== null) {
-            return $model;
-        } else {
-            throw new NotFoundHttpException('The requested page does not exist.');
-        }
+        return $this->findModelById(ContentNode::className(), $id);
     }
 
     protected function getManager()
     {
         $user = $this->getUser();
-        $manager = $this->createObject(ContentNodesManager::className(), [$user]);
+        $manager = $this->createObject(
+            ContentNodesManager::className(),
+            [$user]
+        );
 
         return $manager;
     }

@@ -209,10 +209,15 @@ abstract class ContentNodeBuilderAbstract extends Object
 
     protected function isUrlExists($url)
     {
-        $query = ContentNode::find()->where(['url' => $url]);
+        $query = $this
+            ->getRepository()
+            ->find(ContentNode::className())
+            ->byUrl($url);
 
         if (!$this->isNew()) {
-            $query = $query->andWhere(['!=', 'id', $this->getNode()->id]);
+            $query = $query->andWhere([
+                '!=', 'id', $this->getNode()->id,
+            ]);
         }
 
         return $query->exists();

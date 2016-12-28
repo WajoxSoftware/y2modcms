@@ -135,13 +135,19 @@ class ContentNodesManager extends Object
 
     public function removeFile($id)
     {
-        $model = ContentNodeFile::findOne($id);
+        $model = $this
+            ->getRepository()
+            ->find(ContentNodeFile::className())
+            ->byId($id)
+            ->one();
 
         if ($model == null) {
             throw new \Exception('Content Node File did not found');
         }
 
-        $this->getUploadsManager()->remove($model->uploaded_file_id);
+        $this
+            ->getUploadsManager()
+            ->remove($model->uploaded_file_id);
 
         if (!$model->delete()) {
             return false;
@@ -172,11 +178,17 @@ class ContentNodesManager extends Object
 
     protected function findNode($id)
     {
-        if (($model = ContentNode::findOne($id)) == null) {
-            throw new \Exception('ContentNode not found');
-        }
+        $this
+            ->getRepository()
+            ->find(ContentNode::className())
+            ->byId($id)
+            ->one();
 
-        return $model;
+        if ($model !== null) {
+            return $model;
+        }
+        
+        throw new \Exception('ContentNode not found');
     }
 
     protected function setBuilder($builder)
@@ -212,6 +224,9 @@ class ContentNodesManager extends Object
 
     protected function getUploadsManager()
     {
-        return $this->createObject(UploadsManager::className(), [$this->getUser()]);
+        return $this->createObject(
+            UploadsManager::className(),
+            [$this->getUser()]
+        );
     }
 }

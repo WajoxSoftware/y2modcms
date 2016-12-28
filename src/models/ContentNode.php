@@ -2,6 +2,7 @@
 namespace wajox\y2modcms\models;
 
 use wajox\yii2base\models\UploadedImage;
+use wajox\y2modcms\models\query\ContentNodeQuery;
 
 class ContentNode extends \wajox\yii2base\components\db\ActiveRecord
 {
@@ -54,6 +55,14 @@ class ContentNode extends \wajox\yii2base\components\db\ActiveRecord
         ];
     }
 
+    public static function find()
+    {
+        return self::createObject(
+            ContentNodeQuery::className(),
+            [get_called_class()]
+        );
+    }
+
     public function getParent()
     {
         return $this->hasOne(self::className(), ['id' => 'parent_node_id']);
@@ -74,9 +83,12 @@ class ContentNode extends \wajox\yii2base\components\db\ActiveRecord
 
         $ids = explode(',', $this->parent_node_ids);
 
-        return ContentNode::find()->where([
-                'id' => $ids,
-            ])->orderBy('id ASC')->all();
+        return $this
+            ->getRepository()
+            ->find(self::className())
+            ->byId($ids)
+            ->orderBy('id ASC')
+            ->all();
     }
 
     public function getContentNodes()

@@ -31,10 +31,16 @@ class DefaultController extends \wajox\yii2base\controllers\Controller
     {
         $conditions = ['url' => $url];
 
-        if (($model = ContentNode::find()->where($conditions)->one()) !== null) {
+        $model = $this
+            ->getRepository()
+            ->find(ContentNode::className())
+            ->byUrl($url)
+            ->one();
+
+        if ($model !== null) {
             return $model;
-        } else {
-            throw new NotFoundHttpException('The requested page does not exist.');
         }
+        
+        throw new NotFoundHttpException('The requested page does not exist.');
     }
 }

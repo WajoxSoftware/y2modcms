@@ -42,17 +42,14 @@ class PreviewsController extends ApplicationController
 
     public function getManager()
     {
-        $user = $this->getUser();
-
-        return  $this->createObject(ContentNodesManager::className(), [$user]);
+        return  $this->createObject(
+            ContentNodesManager::className(),
+            [$this->getUser()]
+        );
     }
 
     protected function findNodeModel($id)
     {
-        if (($model = ContentNode::findOne($id)) !== null) {
-            return $model;
-        } else {
-            throw new NotFoundHttpException('The requested page does not exist.');
-        }
+        return $this->findModelById(ContentNode::className(), $id);
     }
 }
