@@ -3,7 +3,7 @@ namespace wajox\y2modcms\models\query;
 
 use wajox\yii2base\components\db\ActiveQuery;
 
-class GoodQuery extends ActiveQuery
+class ContentNodeQuery extends ActiveQuery
 {
     public function byUrl($id)
     {
