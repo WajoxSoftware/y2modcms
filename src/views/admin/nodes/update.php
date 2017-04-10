@@ -23,14 +23,14 @@ $this->params['pageControls']['items'][] = [
 ?>
 
 <div class="row">
-	<div class="col-md-9">
+	<div class="col m9">
 		<?= $this->render('_form', [
             'model' => $model,
             'modelNode' => $modelNode,
         ]); ?>
 	</div>
 
-  <div class="col-md-3">
+  <div class="col m3">
     <?=  $this->render('_preview', ['model' => $modelNode]) ?>
   </div>
 </div>

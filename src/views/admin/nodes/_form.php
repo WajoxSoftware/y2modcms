@@ -17,14 +17,14 @@ $formFieldsView = $formViewsMap[$model->typeId];
     <?php $form = ActiveForm::begin(); ?>
 
     <div class="row">
-      <div class="col-md-12">
+      <div class="col m12">
         <?= FormHelper::renderUrlPartField($form, $model, 'url', [$modelNode::VIEW_ROUTE, 'url' => '...']) ?>
       </div>
     </div>
 
 
     <div class="row">
-        <div class="col-md-12">
+        <div class="col m12">
             <?= $form->field($model, 'layout')->dropDownList(
                 ContentNode::getLayoutsList(),
                 ['prompt' => \Yii::t('app/general', 'Select')]
@@ -33,13 +33,13 @@ $formFieldsView = $formViewsMap[$model->typeId];
     </div>
 
     <div class="row">
-        <div class="col-md-12">
+        <div class="col m12">
             <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
         </div>
     </div>
 
     <div class="row">
-      <div class="col-md-12">
+      <div class="colm m12">
         <?= $form->field($model, 'tags')->textInput(['maxlength' => true, 'class' => 'tagsinput', 'data-role' => 'tagsinput']) ?>
       </div>
     </div>

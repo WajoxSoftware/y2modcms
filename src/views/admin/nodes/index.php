@@ -28,6 +28,7 @@ $this->render('_controls', ['parentNode' => $parentNode]);
 
 <ul class="media-list">
   <?php echo ListView::widget([
+    'layout' => '<ul class="collection">{items}</ul><div>{pager}</div>',
     'dataProvider' => $dataProvider,
     'itemView' => '_item',
   ]); ?>

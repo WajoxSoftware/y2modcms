@@ -23,13 +23,13 @@ if ($parentNode != null) {
     $this->params['pageControls']['items'][] = [
         'title' => \Yii::t('app/general', 'View'),
         'url' => $parentNode->pageUrl,
-        'icon' => 'fa-eye',
+        'icon' => 'open_in_browser',
       ];
 
     $this->params['pageControls']['items'][] = [
         'title' => \Yii::t('app/general', 'Edit'),
         'url' => ['update', 'id' => $parentNode->id],
-        'icon' => 'fa-pencil',
+        'icon' => 'edit',
       ];
 }
 
@@ -37,7 +37,7 @@ if (in_array(ContentNode::TYPE_ID_CATALOG, $availableTypes)) {
     $this->params['pageControls']['items'][] = [
         'title' => \Yii::t('app/attributes', 'Content Node Type Catalog'),
         'url' => ['create', 'typeId' => ContentNode::TYPE_ID_CATALOG, 'parentId' => $parentNodeId, 'suffix' => '.js'],
-        'icon' => 'fa-plus',
+        'icon' => 'create_new_folder',
         'class' => 'js-remote-link',
       ];
 }
@@ -46,7 +46,7 @@ if (in_array(ContentNode::TYPE_ID_PAGE, $availableTypes)) {
     $this->params['pageControls']['items'][] = [
         'title' => \Yii::t('app/attributes', 'Content Node Type Page'),
         'url' => ['create', 'typeId' => ContentNode::TYPE_ID_PAGE, 'parentId' => $parentNodeId, 'suffix' => '.js'],
-        'icon' => 'fa-plus',
+        'icon' => 'note_add',
         'class' => 'js-remote-link',
       ];
 }

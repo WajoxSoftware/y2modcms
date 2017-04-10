@@ -10,7 +10,7 @@ $form = ActiveForm::begin([
 ?>
 
 <div class="row">
-    <div class="col-md-12">
+    <div class="col m12">
         <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
     </div>
 </div>
