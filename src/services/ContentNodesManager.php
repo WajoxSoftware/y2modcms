@@ -178,7 +178,7 @@ class ContentNodesManager extends Object
 
     protected function findNode($id)
     {
-        $this
+        $model = $this
             ->getRepository()
             ->find(ContentNode::className())
             ->byId($id)
