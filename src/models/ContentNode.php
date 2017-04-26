@@ -86,7 +86,7 @@ class ContentNode extends \wajox\yii2base\components\db\ActiveRecord
         return $this
             ->getRepository()
             ->find(self::className())
-            ->byId($ids)
+            ->byIds($ids)
             ->orderBy('id ASC')
             ->all();
     }
